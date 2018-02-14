@@ -11,6 +11,15 @@
 using namespace std;
 
 int main () {
+	cout << "Print out a mathematical expression using numbers and operators." << endl;
+	cout << "Your expression will be converted to postfix, prefix and infix." << endl;
+	// will need to find out how to parse out input into ints and chars
+	for (int i = 0; 
+
+
+	cout << "[Postfix] " << printPost(); << endl;
+	cout << "[Prefix] " << printPre(); << endl;
+	cout << "[Infix] " << printIn(); << endl;
 
 // if there on the same level then pop the operation out of the stack in to the output, unless it is ^:
 
