@@ -10,14 +10,16 @@ class Node {
 	// each node is assigned a student which can be retrieved
 	// each node has a node that comes afterward, next
 	public:
-		Node();
+		Node(const char* tok);
 		~Node();
-		void setNext(Node*);
-		Node* getNext();
-		char c;
-
-	private: 
-		Node* next;
+		int getPrecedence() const;
+		bool isLeftA() const;
+	private:
+		const char* token;
+		int precedence;
+		Node* left;
+		Node* right;
+		bool leftA; // left associative
 
 };
 #endif

@@ -1,24 +1,42 @@
 #include "node.h"
 
 // constructor of each node
-// each node has its own current student
-Node::Node(Student* current) {
-	student = current;
-	next = NULL;
+// each token has its own precedence
+Node::Node(const char* tok) {
+	token = tok;
+	precedence = 0;
+	leftA = true;
+	if (token[0] == '+' || token[0] == '-') {
+		precedence = 1;
+	}
+	if (token[0] == '*' || token[0] == '/') {
+		precedence = 2;
+	}
+	if (token[0] == '^') {
+		precedence = 3;
+		leftA = false;
+	}
+	if (token[0] == ')' || token[0] == '(') {
+		precedence = 4;
+	}	
+	left = NULL;
+	right = NULL;
 }
 
-// destructor of the student class to prevent segmentation faults
-// this will be used when created the delete function
+// destructor of the node class to prevent segmentation faults
 Node::~Node() {
-	next = NULL;
+	if (left != NULL) {
+		delete left;
+	}
+	if (right != NULL) {
+		delete right;
+	}
 }
 
-// setNext is a function that gives a value to the next node in the list
-void Node::setNext(Node* newNode) {
-	next = newNode;
+int Node::getPrecedence() const {
+	return precedence;
 }
 
-// getNext is a function that will return a node pointer to the next node
-Node* Node::getNext() {
-	return next;
+bool Node::isLeftA() const {
+	return leftA;
 }
