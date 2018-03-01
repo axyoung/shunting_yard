@@ -8,6 +8,7 @@ clean:
 	rm -f $(PROGRAM) *.o
 
 run: $(PROGRAM)
+	echo "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3" | ./$(PROGRAM)
 	./$(PROGRAM)
 
 main.o: main.cpp Node.h
